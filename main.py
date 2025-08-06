@@ -99,6 +99,3 @@ def search_jobs(query: str = Query(...), location: str = "India"):
     else:
         return {"jobs": [], "note": "No job results found. Try using broader keywords or changing the location."}
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
