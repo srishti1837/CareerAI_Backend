@@ -13,7 +13,7 @@ app = FastAPI()
 origins = [
     "http://127.0.0.1:5500",  # your frontend origin
     "http://localhost:5500",  # just in case
-    "https://webdev-100.netlify.app/",  # if you deploy frontend later
+    "https://webdev-100.netlify.app",  # if you deploy frontend later
 ]
 
 app.add_middleware(
