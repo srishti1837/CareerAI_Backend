@@ -10,14 +10,23 @@ load_dotenv()
 
 app = FastAPI()
 
-# CORS for frontend
+origins = [
+    "http://127.0.0.1:5500",  # your frontend origin
+    "http://localhost:5500",  # just in case
+    "https://careerai.vercel.app",  # if you deploy frontend later
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,  # or use ["*"] to allow all origins (not recommended for production)
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+@app.get("/")
+def root():
+    return {"message": "Hello World"}
 
 ADZUNA_APP_ID = os.getenv("ADZUNA_APP_ID")
 ADZUNA_APP_KEY = os.getenv("ADZUNA_APP_KEY")
